@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas Pendientes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Lista de Tareas Pendientes</h1>
+        <button id="toggleFormBtn" class="btn btn-primary mb-3">Agregar Tarea</button>
+        
+        <div id="taskForm" class="mb-3" style="display: none;">
+            <div class="form-group">
+                <input type="text" id="taskInput" class="form-control" placeholder="Nueva tarea">
+            </div>
+            <button id="addTaskBtn" class="btn btn-success">Agregar</button>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Tarea</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="taskList">
+                <!-- Las tareas se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./scripts.js"></script>
+</body>
+</html>
