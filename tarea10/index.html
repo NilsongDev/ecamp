@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Virtual Metel - Eva</title>
+</head>
+<body>
+    <script>
+        // Función principal del asistente virtual
+        function iniciarAsistente() {
+            let opcion = prompt("Bienvenido a Metel, Eva. Elija una opción:\n1. Boletas y pagos\n2. Señal y llamada\n3. Oferta comercial\n4. Otras consultas");
+
+            switch (opcion) {
+                case '1':
+                    manejarBoletasYPagos();
+                    break;
+                case '2':
+                    manejarSenalYllamadas();
+                    break;
+                case '3':
+                    manejarOfertaComercial();
+                    break;
+                case '4':
+                    manejarOtrasConsultas();
+                    break;
+                default:
+                    alert("Opción no válida. Por favor, elija una opción del menú.");
+                    iniciarAsistente(); // Volver a mostrar el menú principal
+                    break;
+            }
+        }
+
+        // Función para manejar "Boletas y pagos"
+        function manejarBoletasYPagos() {
+            let opcion = prompt("Seleccione una opción:\n1. Ver Boleta\n2. Pagar cuenta");
+
+            switch (opcion) {
+                case '1':
+                    alert("Aquí está la información sobre su boleta.");
+                    break;
+                case '2':
+                    alert("Para pagar su cuenta, por favor, visite nuestra página de pagos.");
+                    break;
+                default:
+                    alert("Opción no válida. Regresando al menú principal.");
+                    iniciarAsistente(); // Volver a mostrar el menú principal
+                    break;
+            }
+        }
+
+        // Función para manejar "Señal y llamada"
+        function manejarSenalYllamadas() {
+            let solicitud = prompt("¿Cuál es su solicitud?\n1. Señal\n2. Llamada");
+
+            switch (solicitud) {
+                case '1':
+                    alert("Estamos revisando su señal. Por favor, espere.");
+                    break;
+                case '2':
+                    alert("Estamos revisando su llamada. Por favor, espere.");
+                    break;
+                default:
+                    alert("Opción no válida. Regresando al menú principal.");
+                    iniciarAsistente(); // Volver a mostrar el menú principal
+                    break;
+            }
+        }
+
+        // Función para manejar "Oferta comercial"
+        function manejarOfertaComercial() {
+            let respuesta = prompt("¿Está interesado en nuestras ofertas comerciales? (SI/NO)");
+
+            if (respuesta.toUpperCase() === 'SI') {
+                alert("¡Genial! Le enviaremos las ofertas comerciales a su correo electrónico.");
+            } else if (respuesta.toUpperCase() === 'NO') {
+                alert("Entendido. Si cambia de opinión, no dude en contactarnos.");
+            } else {
+                alert("Respuesta no válida. Regresando al menú principal.");
+                iniciarAsistente(); // Volver a mostrar el menú principal
+            }
+        }
+
+        // Función para manejar "Otras consultas"
+        function manejarOtrasConsultas() {
+            let consulta = prompt("Por favor, ingrese su consulta:");
+
+            if (consulta) {
+                alert("Hemos recibido su consulta. Nos pondremos en contacto con usted pronto.");
+            } else {
+                alert("No se ingresó ninguna consulta. Regresando al menú principal.");
+                iniciarAsistente(); // Volver a mostrar el menú principal
+            }
+        }
+
+        // Iniciar el asistente virtual
+        iniciarAsistente();
+    </script>
+</body>
+</html>

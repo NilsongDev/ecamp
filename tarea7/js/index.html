@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparar Números</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Comparar dos Números</h1>
+        <form>
+            <div class="form-group">
+                <label for="num1">Ingrese el primer número:</label>
+                <input type="number" class="form-control" id="num1" required>
+            </div>
+            <div class="form-group">
+                <label for="num2">Ingrese el segundo número:</label>
+                <input type="number" class="form-control" id="num2" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="compararNumeros()">Comparar</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function compararNumeros() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('Por favor, ingrese números válidos.');
+                return;
+            }
+
+            let mensaje;
+            if (num1 > num2) {
+                mensaje = `El número ${num1} es mayor que el número ${num2}.`;
+            } else if (num1 < num2) {
+                mensaje = `El número ${num2} es mayor que el número ${num1}.`;
+            } else {
+                mensaje = 'Ambos números tienen el mismo valor.';
+            }
+
+            alert(mensaje);
+        }
+    </script>
+</body>
+</html>

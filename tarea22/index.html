@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación del DOM</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #text2 {
+            display: none;
+        }
+        #img {
+            transition: transform 0.3s ease;
+        }
+        #caja2 {
+            text-align: center; /* Centrando la imagen */
+        }
+    </style>
+</head>
+<body>
+    <div class="caja1 container">
+        <div id="text1">
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, accusantium distinctio accusamus totam rem at ex alias labore veniam aliquam nisi recusandae esse voluptatum culpa veritatis enim porro dolor quis?
+            </p>
+        </div>
+        <div id="text2">
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, accusantium distinctio accusamus totam rem at ex alias labore veniam aliquam nisi recusandae esse voluptatum culpa veritatis enim porro dolor quis?
+            </p>
+        </div>
+    </div>
+    <div id="caja2" class="container">
+        <img src="pacman.jpg" id="img" width="20%" alt="">
+    </div>
+    <div id="caja3" class="container">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente laudantium aliquid rem consequatur eius nemo alias provident sunt et voluptate in aut, quas hic quia dolores, corrupti voluptatem reiciendis facere.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Compras</title>
+</head>
+<body>
+    <h1>Calculadora de Compras</h1>
+    <button onclick="calcular()">Realizar Cálculo</button>
+
+    <script>
+        function calcular() {
+            let operacion = prompt("Seleccione la operación:\n1. Calcular el subtotal\n2. Calcular el total con IVA\n3. Calcular compra con descuento e IVA");
+            operacion = parseInt(operacion);
+
+            switch(operacion) {
+                case 1:
+                    calcularSubtotal();
+                    break;
+                case 2:
+                    calcularTotalConIva();
+                    break;
+                case 3:
+                    calcularCompraConDescuentoEIva();
+                    break;
+                default:
+                    alert("Operación no válida");
+                    break;
+            }
+        }
+
+        function calcularSubtotal() {
+            let cantidad = parseInt(prompt("Ingrese la cantidad de artículos comprados:"));
+            let precio = parseFloat(prompt("Ingrese el precio de los artículos:"));
+            let subtotal = cantidad * precio;
+            alert("El subtotal es: $" + subtotal.toFixed(0));
+        }
+
+        function calcularTotalConIva() {
+            let cantidad = parseInt(prompt("Ingrese la cantidad de artículos comprados:"));
+            let precio = parseFloat(prompt("Ingrese el precio de los artículos:"));
+            let subtotal = cantidad * precio;
+            let iva = subtotal * 0.19;
+            let total = subtotal + iva;
+            alert("El total con IVA es: $" + total.toFixed(0));
+        }
+
+        function calcularCompraConDescuentoEIva() {
+            let cantidad = parseInt(prompt("Ingrese la cantidad de artículos comprados:"));
+            let precio = parseFloat(prompt("Ingrese el precio de los artículos:"));
+            let descuento = parseFloat(prompt("Ingrese el porcentaje de descuento (0-100):"));
+            let subtotal = cantidad * precio;
+            let descuentoAplicado = subtotal * (descuento / 100);
+            let subtotalConDescuento = subtotal - descuentoAplicado;
+            let iva = subtotalConDescuento * 0.19;
+            let total = subtotalConDescuento + iva;
+            alert("El total con descuento e IVA es: $" + total.toFixed(0));
+        }
+    </script>
+</body>
+</html>

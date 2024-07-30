@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Interactiva de Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            width: 300px;
+            margin: auto;
+        }
+        .task-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+        }
+        .task-item.completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .complete-btn, .delete-btn {
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .complete-btn {
+            background-color: #28a745;
+        }
+        .complete-btn:hover {
+            background-color: #218838;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas</h1>
+        <input type="text" id="nuevaTareaInput" placeholder="Nueva tarea">
+        <button id="agregarTareaBtn">Agregar</button>
+        <ul id="listaTareas" class="task-list"></ul>
+    </div>
+
+    <script>
+        document.getElementById('agregarTareaBtn').addEventListener('click', function() {
+            var tareaInput = document.getElementById('nuevaTareaInput');
+            var textoTarea = tareaInput.value.trim();
+
+            if (textoTarea !== "") {
+                var listaTareas = document.getElementById('listaTareas');
+                
+                var tareaItem = document.createElement('li');
+                tareaItem.className = 'task-item';
+                
+                var tareaTexto = document.createElement('span');
+                tareaTexto.textContent = textoTarea;
+
+                var completarBtn = document.createElement('button');
+                completarBtn.textContent = 'Completar';
+                completarBtn.className = 'complete-btn';
+                completarBtn.onclick = function() {
+                    tareaItem.classList.toggle('completed');
+                    completarBtn.style.display = 'none';
+                    eliminarBtn.style.display = 'inline';
+                };
+
+                var eliminarBtn = document.createElement('button');
+                eliminarBtn.textContent = 'Eliminar';
+                eliminarBtn.className = 'delete-btn';
+                eliminarBtn.style.display = 'none';
+                eliminarBtn.onclick = function() {
+                    listaTareas.removeChild(tareaItem);
+                };
+
+                tareaItem.appendChild(tareaTexto);
+                tareaItem.appendChild(completarBtn);
+                tareaItem.appendChild(eliminarBtn);
+                listaTareas.appendChild(tareaItem);
+
+                tareaInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

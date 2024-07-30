@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Gestor de Tareas</h1>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Título de la Tarea</label>
+                        <input type="text" class="form-control" id="taskTitle" placeholder="Ingrese el título de la tarea" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Añadir Tarea</button>
+                </form>
+                <div class="btn-group mt-4" role="group">
+                    <button class="btn btn-secondary" onclick="filterTasks('all')">Mostrar Todas</button>
+                    <button class="btn btn-secondary" onclick="filterTasks('completed')">Mostrar Completadas</button>
+                    <button class="btn btn-secondary" onclick="filterTasks('incomplete')">Mostrar Incompletas</button>
+                </div>
+                <ul class="list-group mt-4" id="taskList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

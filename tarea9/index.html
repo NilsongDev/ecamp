@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Notas de Alumnos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilo de márgenes -->
+    <style>
+        .contenedor {
+            margin-top: 20px;
+        }
+        .resultado {
+            margin-top: 20px;
+        }
+        .grupo-botones {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Notas de Alumnos</h1>
+        
+        <!-- Formulario para ingresar alumnos y notas -->
+        <div class="tarjeta">
+            <div class="tarjeta-cuerpo">
+                <h2>Agregar un Alumno</h2>
+                <form id="formularioAlumno">
+                    <div class="formulario-grupo">
+                        <label for="nombreAlumno">Nombre</label>
+                        <input type="text" class="form-control" id="nombreAlumno" required>
+                    </div>
+                    <div class="formulario-grupo">
+                        <label for="calificacionAlumno">Calificación</label>
+                        <input type="number" class="form-control" id="calificacionAlumno" min="0" max="10" required>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Agregar Alumno</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <!-- Botones en forma lineal -->
+        <div class="btn-group btn-group-lg mt-3" role="group" aria-label="Opciones">
+            <button type="button" class="btn btn-secondary" onclick="mostrarAlumnos()">1. Ver lista de alumnos</button>
+            <button type="button" class="btn btn-secondary" onclick="mostrarCalificaciones()">2. Ver calificaciones de alumnos</button>
+            <button type="button" class="btn btn-secondary" onclick="calcularPromedio()">3. Calcular el promedio de todo el grupo</button>
+        </div>
+        
+        <div class="resultado mt-3" id="resultado"></div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Datos para agregar alumnos por defecto
+        const alumnos = [
+            { nombre: "Roberto Hernandez", calificacion: 6 },
+            { nombre: "Ana Lopez", calificacion: 4 },
+            { nombre: "Luis Garcia", calificacion: 3 }
+        ];
+
+        document.getElementById('formularioAlumno').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('nombreAlumno').value;
+            const calificacion = parseFloat(document.getElementById('calificacionAlumno').value);
+
+            if (nombre && !isNaN(calificacion)) {
+                alumnos.push({ nombre, calificacion });
+                document.getElementById('formularioAlumno').reset();
+                mostrarAlumnos(); 
+            }
+        });
+
+        function mostrarAlumnos() {
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = '<h2>Lista de Alumnos</h2><ul class="list-group">';
+            alumnos.forEach((alumno, indice) => {
+                resultadoDiv.innerHTML += `<li class="list-group-item">${indice + 1}. ${alumno.nombre}</li>`;
+            });
+            resultadoDiv.innerHTML += '</ul>';
+        }
+
+        function mostrarCalificaciones() {
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = '<h2>Calificaciones de Alumnos</h2><ul class="list-group">';
+            alumnos.forEach(alumno => {
+                const estado = alumno.calificacion >= 4 ? 'Aprobado' : 'Reprobado';
+                resultadoDiv.innerHTML += `<li class="list-group-item">${alumno.nombre}: Calificación ${alumno.calificacion}, ${estado}</li>`;
+            });
+            resultadoDiv.innerHTML += '</ul>';
+        }
+
+        function calcularPromedio() {
+            const resultadoDiv = document.getElementById('resultado');
+            if (alumnos.length === 0) {
+                resultadoDiv.innerHTML = '<h2>Promedio del Grupo</h2><p>No hay alumnos registrados.</p>';
+                return;
+            }
+            const totalCalificaciones = alumnos.reduce((suma, alumno) => suma + alumno.calificacion, 0);
+            const promedio = totalCalificaciones / alumnos.length;
+            resultadoDiv.innerHTML = `<h2>Promedio del Grupo</h2><p>El promedio del grupo es: ${promedio.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Bancaria</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Plataforma Bancaria</h2>
+        <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#loginModal">
+            Ingresar al Cajero
+        </button>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Inicio de Sesión</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="username">Nombre de Usuario</label>
+                        <input type="text" id="username" class="form-control" placeholder="Ingrese su nombre de usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña">
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="login()">Iniciar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banco Modal -->
+    <div class="modal fade" id="bankModal" tabindex="-1" role="dialog" aria-labelledby="bankModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bankModalLabel">Cajero Automático</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 id="welcomeMessage"></h5>
+                    <div id="menu">
+                        <button class="btn btn-info btn-block" onclick="showBalance()">Ver Saldo</button>
+                        <button class="btn btn-success btn-block" onclick="showDeposit()">Realizar Depósito</button>
+                        <button class="btn btn-warning btn-block" onclick="showWithdraw()">Realizar Giro</button>
+                        <button class="btn btn-danger btn-block" onclick="exitATM()">Salir</button>
+                    </div>
+
+                    <div id="balance" style="display:none;">
+                        <h5>Saldo Actual: $<span id="balanceAmount"></span></h5>
+                        <button class="btn btn-secondary btn-block" onclick="showMenu()">Volver</button>
+                    </div>
+
+                    <div id="deposit" style="display:none;">
+                        <h5>Depósito</h5>
+                        <input type="number" id="depositAmount" class="form-control" placeholder="Ingrese monto a depositar">
+                        <button class="btn btn-primary btn-block mt-3" onclick="deposit()">Confirmar Depósito</button>
+                        <button class="btn btn-secondary btn-block" onclick="showMenu()">Volver</button>
+                    </div>
+
+                    <div id="withdraw" style="display:none;">
+                        <h5>Giro</h5>
+                        <input type="number" id="withdrawAmount" class="form-control" placeholder="Ingrese monto a girar">
+                        <button class="btn btn-primary btn-block mt-3" onclick="withdraw()">Confirmar Giro</button>
+                        <button class="btn btn-secondary btn-block" onclick="showMenu()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./scripts.js"></script>
+</body>
+</html>
